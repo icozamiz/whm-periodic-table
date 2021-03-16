@@ -145,6 +145,7 @@ function App() {
               {showTableView ? (
                 <Box className="whm-periodic-table-container">
                   <PeriodicTable
+                    selectedCategory={selectedCategory}
                     isFrench={isFrench}
                     showListView={() => setShowTableView(false)}
                     onCategoryHovered={(category) =>
@@ -155,8 +156,8 @@ function App() {
                     <Legend
                       isFrench={isFrench}
                       selectedCategory={selectedCategory}
-                      onCategorySelected={(category: ICategory) =>
-                        setSelectedCategory(category.id)
+                      onCategorySelected={(category?: ICategory) =>
+                        setSelectedCategory(category?.id || "")
                       }
                     />
                   </Box>

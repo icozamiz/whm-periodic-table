@@ -49,6 +49,7 @@ export const CategoryTable = ({
             >
               <ElementCard
                 element={data}
+                selected={false}
                 onHovered={() => {}}
                 onCategoryHovered={() => {}}
                 onClick={() => {}}

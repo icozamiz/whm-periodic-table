@@ -7,7 +7,7 @@ import { ICategory } from "../../types";
 export interface ILegendProps {
   isFrench: boolean;
   selectedCategory: string;
-  onCategorySelected: (category: ICategory) => void;
+  onCategorySelected: (category?: ICategory) => void;
 }
 
 export const Legend = ({
@@ -30,7 +30,7 @@ export const Legend = ({
         return (
           <Box
             className="legend-item"
-            onClick={() => onCategorySelected(category)}
+            onMouseEnter={() => onCategorySelected(category)}
           >
             <Box className={className}></Box>
             <Box className={labelClassName}>{category.name}</Box>

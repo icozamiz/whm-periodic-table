@@ -5,6 +5,7 @@ import "./styles.scss";
 
 export interface IElementCardProps {
   element: IElement;
+  selected: boolean;
   onClick: (element: IElement) => void;
   onHovered: (element: IElement | null) => void;
   onCategoryHovered: (category: string) => void;
@@ -12,6 +13,7 @@ export interface IElementCardProps {
 
 export const ElementCard = ({
   element,
+  selected,
   onClick,
   onHovered,
   onCategoryHovered,
@@ -21,7 +23,9 @@ export const ElementCard = ({
   return (
     <Box
       title="Click for more info"
-      className={`element-card element-${number} ${category}`}
+      className={`element-card element-${number} ${category} ${
+        selected ? "selected" : ""
+      }`}
       onMouseEnter={() => {
         onCategoryHovered(category);
         onHovered(element);

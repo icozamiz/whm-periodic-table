@@ -11,6 +11,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import "./styles.scss";
 
 export interface IPeriodicTableProps {
+  selectedCategory: string;
   onCategoryHovered: (category: string) => void;
   showListView: () => void;
   isFrench: boolean;
@@ -18,6 +19,7 @@ export interface IPeriodicTableProps {
 
 export const PeriodicTable = ({
   isFrench,
+  selectedCategory,
   onCategoryHovered,
   showListView,
 }: IPeriodicTableProps) => {
@@ -36,10 +38,11 @@ export const PeriodicTable = ({
     }
   };
   const dataToDisplay = isFrench ? frJsonData : jsonData;
-  console.log(dataToDisplay.map((d) => d.infoBlurb));
   const sortedData = dataToDisplay.sort(
     (a, b) => parseInt(a.number) - parseInt(b.number)
   );
+  console.log(sortedData.map((d) => d.urlLink));
+
   return (
     <>
       {matchesMobile && (
@@ -53,6 +56,7 @@ export const PeriodicTable = ({
             <ElementCard
               key={e.number}
               element={e}
+              selected={e.category === selectedCategory}
               onHovered={(element) => onElementHovered(element)}
               onClick={(element) => onElementClicked(element)}
               onCategoryHovered={(category) => onCategoryHovered(category)}
@@ -70,6 +74,7 @@ export const PeriodicTable = ({
             <ElementCard
               key={e.number}
               element={e}
+              selected={e.category === selectedCategory}
               onHovered={(element) => onElementHovered(element)}
               onClick={(element) => onElementClicked(element)}
               onCategoryHovered={(category) => onCategoryHovered(category)}
